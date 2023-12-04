@@ -1,0 +1,85 @@
+<div class="main-content">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger">
+                      <h4 class="card-title ">Usuarios</h4>
+                      <p class="card-category">Lista de usuarios registrados</p>
+                  </div>
+                  <div class="card-body">
+                    <form class="navbar-form">
+                        <div class="input-group no-border">
+                            <input type="text" value="" [(ngModel)]="searchText" class="form-control" placeholder="Search...">
+                            <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i>
+                                <div class="ripple-container"></div>
+                            </button>
+                        </div>
+                    </form>
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      ID
+                                  </th>
+                                  <th>
+                                      Razon Social
+                                  </th>
+                                  <th>
+                                      Nombre y Apellido
+                                  </th>
+                                  <th>
+                                      Correo Electronico
+                                  </th>
+                                  <th>
+                                      Domicilio
+                                  </th>
+                                  <th>
+                                      Telefono
+                                  </th>
+                                  <th>
+                                      Role
+                                  </th>
+                                  <th>
+                                    Modificar
+                                  </th>
+                              </thead>
+                              <tbody  *ngFor="let user of users | search: searchText">
+                                  <tr>
+                                      <td>
+                                         1
+                                      </td>
+                                      <td class="text-primary">
+                                         {{user.razonsocial}}
+                                      </td>
+                                      <td class="text-primary">
+                                        {{user.name + ' ' + user.surname}}
+                                      </td>
+                                      <td class="text-primary">
+                                         {{user.email}}
+                                      </td>
+                                      <td class="text-primary">
+                                          {{user.domicilio}}
+                                      </td>
+                                      <td class="text-primary">
+                                         {{user.telefono}}
+                                      </td>
+                                      <td class="text-success">
+                                         {{user.role}}
+                                      </td>
+                                      <td>
+                                        <button class="btn btn-default btn-sm" [routerLink]="['/useredit',user._id]">
+                                          Modificar
+                                        </button>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

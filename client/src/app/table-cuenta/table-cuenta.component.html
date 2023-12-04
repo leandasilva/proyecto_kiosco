@@ -1,0 +1,93 @@
+<div class="main-content" id="table-producto">
+    <div class="container-fluid item-tableproducto">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Cuentas Corrientes</h4>
+                        <p class="card-category">Lista de las cuentas corrientes</p>
+                    </div>
+                    <div class="card-body" >
+                      <form class="navbar-form">
+                          <div class="input-group no-border">
+                              <input type="text" value="" [(ngModel)]="searchText"  class="form-control" placeholder="Search...">
+                              <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                  <i class="material-icons">search</i>
+                                  <div class="ripple-container"></div>
+                              </button>
+                          </div>
+                      </form>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                       Nombre y Apellido
+                                    </th>
+                                    <th>
+                                        DNI
+                                    </th>
+                                    <th>
+                                      Domicilio
+                                    </th>
+                                    <th>
+                                       Telefono
+                                    </th>
+                                    <th>
+                                        Correo Electronico
+                                    </th>
+                                    <th>
+                                        Monto
+                                    </th>
+                                    <th>
+                                       Activar/Desactivar
+                                    </th>
+                                    <th>
+                                       Modificar
+                                    </th>
+                                </thead>
+                                <tbody *ngFor="let cuentacorriente of cuentacorrientes | search: searchText">
+                                    <tr>
+                                        <td>
+                                           1
+                                        </td>
+                                        <td class="text-primary">
+                                           {{cuentacorriente.nombre}}{{cuentacorriente.apellido}}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{cuentacorriente.dni}}
+                                        </td>
+                                        <td class="text-primary">
+                                          {{cuentacorriente.domicilio}}
+                                        </td>
+                                        <td class="text-primary">
+                                           {{cuentacorriente.telefono}}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{cuentacorriente.email}}
+                                        </td>
+                                        <td class="text-primary">
+                                           {{cuentacorriente.monto}}
+                                        </td>
+                                        <td>
+                                          <button class="btn btn-success btn-sm">
+                                              Activar
+                                            </button>
+                                        </td>
+                                        <td>
+                                          <button class="btn btn-default btn-sm" [routerLink]="['/cuentaedit',cuentacorriente._id]">
+                                            Modificar
+                                          </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

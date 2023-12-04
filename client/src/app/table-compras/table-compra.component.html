@@ -1,0 +1,65 @@
+<div class="main-content" id="table-producto">
+    <div class="container-fluid item-tableproducto">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Compras</h4>
+                        <p class="card-category">Lista de compras realizadas</p>
+                    </div>
+                    <div class="card-body" >
+                      <form class="navbar-form">
+                          <div class="input-group no-border">
+                              <input type="text" value="" [(ngModel)]="searchText"  class="form-control" placeholder="ingrese razon social o factura...">
+                              <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                  <i class="material-icons">search</i>
+                                  <div class="ripple-container"></div>
+                              </button>
+                          </div>
+                      </form>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Razon Social
+                                    </th>
+                                    <th>
+                                       N° Factura
+                                    </th>
+                                    <th>
+                                        Monto
+                                    </th>
+                                    <th>
+                                        Fecha
+                                    </th>
+                                </thead>
+                                <tbody *ngFor="let compra of compras | search: searchText">
+                                    <tr>
+                                        <td>
+                                           1
+                                        </td>
+                                        <td class="text-primary">
+                                           {{compra.razonsocial}}
+                                        </td>
+                                        <td class="text-primary">
+                                          {{compra.factura}}
+                                        </td>
+                                        <td class="text-primary">
+                                           {{compra.monto}}
+                                        </td>
+                                        <td class="text-primary">
+                                            {{ compra.created_at | amFromUnix | amLocale:'es' | amDateFormat: 'YYYY-MM-DD' }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

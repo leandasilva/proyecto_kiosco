@@ -1,0 +1,77 @@
+<div class="main-content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header card-header-danger">
+						<h4 class="card-title">{{title}}</h4>
+					</div>
+					<div class="card-body" *ngIf="producto">
+						<div class="alert alert-success" *ngIf="status == 'success'">
+							Se han actualizado tus datos correctamente!!
+						</div>
+					
+						<div class="alert alert-danger" *ngIf="status == 'error'">
+							No se han podido actualizar tus datos!!
+						</div>
+						<form #userEditForm="ngForm" (ngSubmit)="onSubmit()">
+							<div class="row">
+								<div class="col-md-5">
+									<p>
+										<label>Nombre</label>
+										<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="producto.nombre" class="form-control" required />
+										<span *ngIf="!nombre.valid && nombre.touched">
+											La Nombre es obligatorio!!
+										</span>
+									</p>
+								</div>
+								<div class="col-md-3">
+									<p>
+										<label>Rubro</label>
+										<input type="text" name="rubro" #rubro="ngModel" [(ngModel)]="producto.rubro" class="form-control" required />
+										<span *ngIf="!rubro.valid && rubro.touched">
+											El Rubro es obligatorio!!
+										</span>
+									</p>
+									
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<p>
+										<label>Cantidad</label>
+										<input type="numbre" name="cantidad" #cantidad="ngModel" [(ngModel)]="producto.cantidad" class="form-control" required />
+										<span *ngIf="!cantidad.valid && cantidad.touched">
+											La cantidad es obligatorio!!
+										</span>
+									</p>
+									
+								</div>
+								<div class="col-md-6">
+									<p>
+										<label>Precio</label>
+										<input type="number" name="precio" #precio="ngModel" [(ngModel)]="producto.precio" class="form-control" required />
+										<span *ngIf="!precio.valid && precio.touched">
+											El Precio es obligatorio!!
+										</span>
+									</p>
+								</div>
+							</div>
+				
+							<input type="submit" value="{{title}}" class="btn btn-warning" [disabled]="!userEditForm.form.valid" />
+				
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+
+
+
+
+
+
+
+

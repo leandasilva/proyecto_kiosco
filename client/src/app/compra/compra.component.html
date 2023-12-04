@@ -1,0 +1,40 @@
+<div class="col-lg-12">
+	<h3>{{title}}</h3>
+
+	<div class="alert alert-success" *ngIf="status == 'success'">
+		Has enviado el mensaje correctamente, miralo en <a [routerLink]="['/mensajes/enviados']">tus mensajes enviados</a>
+	</div>
+
+	<div class="alert alert-danger" *ngIf="status == 'error'">
+		No se ha podido enviar el mensaje correcamtente. Intentalo mas tarde
+	</div>
+
+	<form #formAdd="ngForm" (ngSubmit)="onSubmit(formAdd)">
+		<p>
+			<label>Proveedor:</label>
+			<!--listado de seguidores-->
+			<select name="razonsocial" #razonsocial="ngModel" [(ngModel)]="compra.razonsocial" class="form-control" required>
+				<option *ngFor="let proveedor of proveedores" value="{{proveedor.razonsocial}}">
+					{{proveedor.razonsocial}}
+			</select>
+		</p>
+
+		<p>
+			<label>N° Factura</label>
+			<input name="text" #factura="ngModel" [(ngModel)]="compra.factura" class="form-control" required/>
+			<span *ngIf="!factura.valid && factura.touched">
+				El N° de factura es obligatorio
+			</span>
+		</p>
+
+		<p>
+			<label>Monto</label>
+			<input name="text" #monto="ngModel" [(ngModel)]="compra.monto" class="form-control" required/>
+			<span *ngIf="!monto.valid && monto.touched">
+				El Monto es obligatorio
+			</span>
+		</p>
+
+		<input type="submit" value="{{title}}" class="btn btn-success" />
+	</form>
+</div>

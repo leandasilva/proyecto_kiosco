@@ -1,0 +1,24 @@
+<div class="d-flex clearfix">
+		<div class="col-lg-4 float-left">
+			<h3>{{title}}</h3>
+			<div class="sidebar-admin">
+				<li class="nav nav-pills nav-stacked nav-pills-stacked-example">
+					<ul role="presentation" [routerLinkActive]="['active']">
+						<a [routerLink]="['enviar']">Enviar mensaje</a>
+					</ul>
+					<ul role="presentation" [routerLinkActive]="['active']">
+						<a [routerLink]="['recibidos']">Mensajes recibidos</a>
+					</ul>
+					<ul role="presentation" [routerLinkActive]="['active']">
+						<a [routerLink]="['enviados']">Mensajes enviados</a>
+					</ul>
+					<ul role="presentation">
+						<a [routerLink]="['/home']">Información</a>
+					</ul>
+				</li>
+			</div>
+		</div>
+	<router-outlet class="float-right"></router-outlet>
+</div>
+
+

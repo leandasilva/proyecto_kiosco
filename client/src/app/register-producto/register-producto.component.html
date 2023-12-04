@@ -1,0 +1,59 @@
+<div class="col-lg-5" style="margin-top: 100px;">
+	
+	<div class="alert alert-success" *ngIf="status == 'success'">
+		Registro completado correctamente, <a [routerLink]="['/login']">identificate aquí</a>
+	</div>
+
+	<div class="alert alert-danger" *ngIf="status == 'error'">
+		El registro no ha podido completarse, quizas tu email o nickname ya esté en uso, intentalo de nuevo con otros datos
+	</div>
+
+	<form #registerForm="ngForm" style="margin-top: 100px;"  (ngSubmit)="onSubmit(registerForm)" class="col-lg-12">
+		
+		<p>
+			<label>Nombre</label>
+			<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="producto.nombre" class="form-control" required />
+			<span *ngIf="!nombre.valid && nombre.touched">
+				La Nombre es obligatorio!!
+			</span>
+		</p>
+		
+		
+		<p>
+			<label>Rubro</label>
+			<input type="text" name="rubro" #rubro="ngModel" [(ngModel)]="producto.rubro" class="form-control" required />
+			<span *ngIf="!rubro.valid && rubro.touched">
+				El Rubro es obligatorio!!
+			</span>
+		</p>
+
+		<p>
+			<label>Cantidad</label>
+			<input type="number" name="cantidad" #cantidad="ngModel" [(ngModel)]="producto.cantidad" class="form-control" required />
+			<span *ngIf="!cantidad.valid && cantidad.touched">
+				La cantidad es obligatorio!!
+			</span>
+		</p>
+
+		<p>
+			<label>Precio</label>
+			<input type="text" name="precio" #precio="ngModel" [(ngModel)]="producto.precio" class="form-control" required />
+			<span *ngIf="!precio.valid && precio.touched">
+				El Precio es obligatorio!!
+			</span>
+		</p>
+
+		<p>
+			<label>Codigo</label>
+			<input type="text" name="codigo" #codigo="ngModel" [(ngModel)]="producto.codigo" class="form-control" required />
+			<span *ngIf="!codigo.valid && codigo.touched">
+				El codigo no es correcto!!
+			</span>
+		</p>
+
+		
+
+		<input type="submit" value="{{title}}" class="btn btn-success" [disabled]="!registerForm.form.valid" /> 
+	</form>
+
+</div>

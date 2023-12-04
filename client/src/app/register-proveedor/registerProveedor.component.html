@@ -1,0 +1,48 @@
+<div class="col-lg-5" style="margin-top: 100px;">
+	<h3>{{title}}</h3>
+	<div class="alert alert-success" *ngIf="status == 'success'">
+		Registro completado correctamente, <a [routerLink]="['/login']">identificate aquí</a>
+	</div>
+
+	<div class="alert alert-danger" *ngIf="status == 'error'">
+		El registro no ha podido completarse, quizas tu email o nickname ya esté en uso, intentalo de nuevo con otros datos
+	</div>
+
+	<form #registerForm="ngForm" style="margin-top: 100px;"  (ngSubmit)="onSubmit(registerForm)" class="col-lg-12">
+		
+		<p>
+			<label>Razon Social</label>
+			<input type="text" name="razonsocial" #razonsocial="ngModel" [(ngModel)]="proveedor.razonsocial" class="form-control" required />
+			<span *ngIf="!razonsocial.valid && razonsocial.touched">
+				La razon social es obligatorio!!
+			</span>
+		</p>
+
+		<p>
+			<label>Domicilio</label>
+			<input type="text" name="domicilio" #domicilio="ngModel" [(ngModel)]="proveedor.domicilio" class="form-control" required />
+			<span *ngIf="!domicilio.valid && domicilio.touched">
+				El domicilio es obligatorio!!
+			</span>
+		</p>
+
+		<p>
+			<label>Telefono</label>
+			<input type="text" name="telefono" #telefono="ngModel" [(ngModel)]="proveedor.telefono" class="form-control" required />
+			<span *ngIf="!telefono.valid && telefono.touched">
+				El Telefono es obligatorio!!
+			</span>
+		</p>
+
+		<p>
+			<label>Correo electrónico</label>
+			<input type="email" name="email" #email="ngModel" [(ngModel)]="proveedor.email" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+			<span *ngIf="!email.valid && email.touched">
+				El correo no es correcto!!
+			</span>
+		</p>	
+
+		<input type="submit" value="{{title}}" class="btn btn-success" [disabled]="!registerForm.form.valid" /> 
+	</form>
+
+</div>
